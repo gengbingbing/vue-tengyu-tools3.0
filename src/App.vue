@@ -5,7 +5,11 @@
 </template>
 <script>
 export default {
-  name: "app"
+  name: "app",
+  mounted(){
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('loader-wrapper').style.display = 'none';
+  }
 };
 </script>
 <style>
