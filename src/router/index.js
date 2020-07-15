@@ -75,6 +75,12 @@ Vue.use(VueRouter)
           meta: { title: '导出/入Excel', icon: '', affix: true }
         },
         {
+          path: '/tool/card',
+          component: () => import('@/views/card/index.vue'),
+          name: '导出/入Excel',
+          meta: { title: '卡片', icon: '', affix: true }
+        },
+        {
           path: '/tool/animation',
           component: () => import('@/views/tool/animation.vue'),
           name: '数字动画',
