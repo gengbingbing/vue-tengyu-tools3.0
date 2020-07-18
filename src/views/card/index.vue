@@ -1,4 +1,6 @@
 <template>
+<div >
+  <div style="height: 300px; width: 100%; background: red;"></div>
   <div class="codeNum">
     <div class="card" id="codeNumCard">
       <div class="header">
@@ -21,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div v-show="visable" class="table-card" :style="{'margin-left': marginLeft+'px'}">
+    <div v-show="visable" class="table-card" :style="{'margin-left':`${marginLeft}px`, 'top': `${top}px`}">
       <div class="header">
         <span>代码详细</span>
       </div>
@@ -30,6 +32,8 @@
       </div>
     </div>
   </div>
+   <div style="height: 600px; width: 100%; background: yellow;"></div>
+</div>
 </template>
 <script>
 import echarts from "echarts";
@@ -38,10 +42,24 @@ export default {
     return {
       visable: false,
       marginLeft: 0,
+      top: 0
     };
   },
   mounted() {
     this.marginLeft = document.getElementById('codeNumCard').clientWidth / 2;
+
+    // 监听页面滚动
+    window.addEventListener('scroll', this.handleScroll);
+
+    // 初始化距离头部距离
+    const chartDom = document.getElementById('codeNumCard');
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    this.top = chartDom.getBoundingClientRect().top + 180 + scrollTop;
+
+  },
+  destroyed () {
+    //离开该页面需要移除这个监听的事件
+    window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     openChart() {
@@ -91,7 +109,16 @@ export default {
       const myChart = echarts.init(dom)
 
       myChart.setOption(option);
-    }
+    },
+    handleScroll () { 
+      // this.visable = false;
+      //改变元素#searchBar的top值
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      var offsetTop = document.querySelector('.table-card').offsetTop;
+      // debugger
+      offsetTop = this.top - Number(scrollTop);
+      document.querySelector('.table-card').style.top = offsetTop+'px';
+    },
   }
 };
 </script>
@@ -103,12 +130,17 @@ export default {
   background: #e6e6e6;
   padding-left: 50px;
   padding-top: 50px;
+  overflow: hidden;
+  width: 320px;
+  height: 180px;
+  // position: fixed;
+  margin-left: 50px;
 
   .card {
     // margin: 0 auto;
     background-color: #ffffff;
     width: 300px;
-    height: 200px;
+    height: 180px;
 
     .header {
       width: 100%;
@@ -157,12 +189,15 @@ export default {
     }
   }
   .table-card {
+    z-index: 999;
     display: inline-block;
     // margin-left: 50%;
     background-color: #FFFFFF;
     width: 600px;
     height: 260px;
     margin-top: 10px;
+    position: fixed;
+    top: auto;
 
     .header {
       line-height: 40px;
