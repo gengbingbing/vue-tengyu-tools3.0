@@ -18,12 +18,12 @@ const cdnMap = {
     'https://unpkg.com/element-ui/lib/theme-chalk/index.css'
   ],
   js: [
-      'https://unpkg.com/element-ui/lib/index.js',
-      'https://cdn.bootcss.com/vue/2.6.10/vue.min.js',
-      'https://cdn.bootcss.com/vue-router/3.0.3/vue-router.min.js',
-      'https://cdn.bootcss.com/vuex/3.1.0/vuex.min.js',
-      'https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js',
-      'https://cdn.bootcss.com/echarts/3.7.0/echarts.min.js'
+    'https://unpkg.com/element-ui/lib/index.js',
+    'https://cdn.bootcss.com/vue/2.6.10/vue.min.js',
+    'https://cdn.bootcss.com/vue-router/3.0.3/vue-router.min.js',
+    'https://cdn.bootcss.com/vuex/3.1.0/vuex.min.js',
+    'https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js',
+    'https://cdn.bootcss.com/echarts/3.7.0/echarts.min.js'
   ]
 }
 // 哪些资源
@@ -33,7 +33,7 @@ const externals = {
   'vue-router': 'VueRouter',
   vuex: 'Vuex',
   axios: 'axios',
-  "echarts": "echarts"
+  'echarts': 'echarts'
 }
 
 module.exports = {
@@ -60,32 +60,32 @@ module.exports = {
     }
   },
   chainWebpack(config) {
-      // 配置cdn
-      config.externals(externals)
-      config.plugin('html')
-        .tap(args => {
-          args[0].cdn = cdnMap
-          return args
-        })
+    // 配置cdn
+    config.externals(externals)
+    config.plugin('html')
+      .tap(args => {
+        args[0].cdn = cdnMap
+        return args
+      })
 
-      // set svg-sprite-loader
-      config.module
-        .rule('svg')
-        .exclude.add(resolve('src/icons'))
-        .end()
-      config.module
-        .rule('icons')
-        .test(/\.svg$/)
-        .include.add(resolve('src/icons'))
-        .end()
-        .use('svg-sprite-loader')
-        .loader('svg-sprite-loader')
-        .options({
-          symbolId: 'icon-[name]'
-        })
-        .end()
+    // set svg-sprite-loader
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
+      .end()
 
-      config
+    config
       .when(process.env.NODE_ENV !== 'development',
         config => {
           // 配置压缩代码
@@ -93,11 +93,11 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()
-          
+
           // 分隔带吗
           config
             .optimization.splitChunks({
@@ -124,17 +124,17 @@ module.exports = {
               }
             })
 
-            // 开启gzip
-            config
-              .plugin('compression')
-              .use(CompressionWebpackPlugin)
-              .tap(() => [
-                  {
-                      test: /\.js$|\.html$|\.css/, // 匹配文件名
-                      threshold: 10240, // 超过10k进行压缩
-                      deleteOriginalAssets: false // 是否删除源文件
-                  }
-              ])
+          // 开启gzip
+          config
+            .plugin('compression')
+            .use(CompressionWebpackPlugin)
+            .tap(() => [
+              {
+                test: /\.js$|\.html$|\.css/, // 匹配文件名
+                threshold: 10240, // 超过10k进行压缩
+                deleteOriginalAssets: false // 是否删除源文件
+              }
+            ])
           // https:// webpack.js.org/configuration/optimization/#optimizationruntimechunk
           config.optimization.runtimeChunk('single')
         }

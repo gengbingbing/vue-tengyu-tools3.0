@@ -17,20 +17,20 @@
   </el-row>
 </template>
 <script>
-  export default {
-    name: 'home',
-    data () {
-      return {
-        loading: true
-      }
-    },
-    mounted() {
-      console.log(this.$router.options.routes, '*******************')
-    }
-  }
+export default {
+  name: 'home',
+  data() {
+    return {
+      loading: true,
+    };
+  },
+  mounted() {
+    console.log(this.$router.options.routes, '*******************');
+  },
+};
 </script>
 <style>
-  .container .main {
-      top: 0px;
-  }
+.container .main {
+  top: 0px;
+}
 </style>
