@@ -1,16 +1,16 @@
-'use strict'
-const path = require('path')
-const defaultSettings = require('./src/defaultSettings.js')
-const CompressionWebpackPlugin = require('compression-webpack-plugin')
+'use strict';
+const path = require('path');
+const defaultSettings = require('./src/defaultSettings.js');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 function resolve(dir) {
-  return path.join(__dirname, dir)
+  return path.join(__dirname, dir);
 }
 
-const name = defaultSettings.title || 'vue Element Admin' // page title
+const name = defaultSettings.title || 'vue Element Admin'; // page title
 
 // port = 9527 npm run dev OR npm run dev --port = 9527
-const port = process.env.port || 8099 // dev port
+const port = process.env.port || 8099; // dev port
 
 // 对应的版本可以看package.json
 const cdnMap = {
@@ -25,7 +25,7 @@ const cdnMap = {
     'https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js',
     'https://cdn.bootcss.com/echarts/3.7.0/echarts.min.js'
   ]
-}
+};
 // 哪些资源
 const externals = {
   vue: 'Vue',
@@ -34,13 +34,13 @@ const externals = {
   vuex: 'Vuex',
   axios: 'axios',
   'echarts': 'echarts'
-}
+};
 
 module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
+  lintOnSave: false,
   productionSourceMap: false,
   devServer: {
     port: port,
@@ -61,18 +61,18 @@ module.exports = {
   },
   chainWebpack(config) {
     // 配置cdn
-    config.externals(externals)
+    config.externals(externals);
     config.plugin('html')
       .tap(args => {
-        args[0].cdn = cdnMap
-        return args
-      })
+        args[0].cdn = cdnMap;
+        return args;
+      });
 
     // set svg-sprite-loader
     config.module
       .rule('svg')
       .exclude.add(resolve('src/icons'))
-      .end()
+      .end();
     config.module
       .rule('icons')
       .test(/\.svg$/)
@@ -83,7 +83,7 @@ module.exports = {
       .options({
         symbolId: 'icon-[name]'
       })
-      .end()
+      .end();
 
     config
       .when(process.env.NODE_ENV !== 'development',
@@ -96,7 +96,7 @@ module.exports = {
               // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
-            .end()
+            .end();
 
           // 分隔带吗
           config
@@ -122,7 +122,7 @@ module.exports = {
                   reuseExistingChunk: true
                 }
               }
-            })
+            });
 
           // 开启gzip
           config
@@ -134,10 +134,10 @@ module.exports = {
                 threshold: 10240, // 超过10k进行压缩
                 deleteOriginalAssets: false // 是否删除源文件
               }
-            ])
+            ]);
           // https:// webpack.js.org/configuration/optimization/#optimizationruntimechunk
-          config.optimization.runtimeChunk('single')
+          config.optimization.runtimeChunk('single');
         }
-      )
+      );
   }
-}
+};
