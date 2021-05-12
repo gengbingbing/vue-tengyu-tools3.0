@@ -137,9 +137,9 @@ export function export_json_to_excel(th, jsonData, defaultTitle) {
     }
     /*再判断是否为中文*/
     else if (val.toString().charCodeAt(0) > 255) {
-      return { 'wch': val.toString().length * 2 };
+      return { 'wch': val.toString().length * 2 + 10 };
     } else {
-      return { 'wch': val.toString().length };
+      return { 'wch': val.toString().length * 2 };
     }
   }))
   /*以第一行为初始值*/
