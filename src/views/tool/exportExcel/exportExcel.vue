@@ -6,6 +6,7 @@
 
 <script>
 import axios from '@/utils/request';
+import { getResData } from './utils';
 export default {
   data() {
     return {
@@ -66,29 +67,55 @@ export default {
     },
   },
   methods: {
+    // 获取类型
     getType() {
       if (this.dataList.length > 0) {
         this.export2Excel();
       } else {
-        this.getData();
+        this.geParams();
       }
     },
-    getData() {
+    // 组装参数
+    geParams() {
       const params = {
         ...this.paramsObj.params,
         pageSize: this.paramsObj.pageSize,
         currentPage: 1,
       };
-      if (this.paramsObj.type === 'post') {
-        axios.get(this.paramsObj.url).then((res) => {
-          const result = res.data.result_vos;
-          this.assembleData(result);
-        });
-      } else {
-        axios.post(this.paramsObj.url, params).then((res) => {
-          debugger;
-        });
+      const total = this.paramsObj.total;
+      this.getAxiosArr(total, this.paramsObj.pageSize);
+    },
+    // 获取请求数据
+    getAxiosArr(total, pageSize) {
+      let serviceArr = [];
+      for (let i = 0; i < total / pageSize + 1; i++) {
+        let service = '';
+        if (this.paramsObj.type === 'post') {
+          service = axios.post(this.paramsObj.url, params);
+        } else {
+          service = axios.get(this.paramsObj.url.replace('p=1', `p=${i + 1}`));
+        }
+        serviceArr.push(service);
       }
+
+      this.getDataPromise(serviceArr);
+    },
+    // 将所有请求进行处理数据
+    getDataPromise(serviceArr) {
+      let promiseArr = [];
+
+      Promise.all(serviceArr)
+        .then((res) => {
+          let dataArr = [];
+          res.forEach((item) => {
+            const result = getResData(item, 'result_vos');
+            dataArr = [...dataArr, ...result];
+          });
+          this.assembleData(dataArr);
+        })
+        .catch((err) => {
+          this.$message.error(`导出失败！ ${err}`);
+        });
     },
     // 组装数据
     assembleData(data) {
@@ -96,7 +123,7 @@ export default {
       data.forEach((item) => {
         let obj = {};
         this.headerObj.fieldArr.forEach((field) => {
-          obj[field] = item[field].replace('<em>', '').replace('</em>', '');
+          obj[field] = item[field].replace(/<em>/g, '').replace(/<\/em>/g, '');
         });
         Arr.push(obj);
       });
@@ -109,10 +136,22 @@ export default {
       const filterVal = this.headerObj.fieldArr;
       const list = dataArr || this.dataListPost;
       const data = this.formatJson(filterVal, list);
-      export_json_to_excel(tHeader, data, this.excelName);
+      export_json_to_excel(
+        tHeader,
+        data,
+        `${this.excelName}-${this.getTime()}`
+      );
     },
     formatJson(filterVal, jsonData) {
       return jsonData.map((v) => filterVal.map((j) => v[j]));
+    },
+    getTime() {
+      const d = new Date();
+      const y = d.getFullYear();
+      const mNow = d.getMonth() + 1;
+      const m = mNow > 10 ? mNow : `0${mNow}`;
+      const day = d.getDate();
+      return `${y}${m}${day}`;
     },
   },
 };
