@@ -1,16 +1,12 @@
 module.exports = {
   root: true,
   parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module',
-    "allowImportExportEverywhere": true  //ignore eslint error: 'import' and 'export' may only appear at the top level
-  },
   env: {
     browser: true,
     node: true,
     es6: true,
   },
-  extends: 'eslint:recommended',
+  // extends: 'eslint:recommended',
   // required to lint *.vue files
   plugins: [
     'html',

@@ -32,22 +32,4 @@ axios.interceptors.response.use(response => {
 }); */
 
 // 通用方法
-export const POST = (url, params) => {
-  return axios.post(`${url}`, params).then(res => res.data);
-};
-
-export const GET = (url, params) => {
-  return axios.get(`${url}`, { params: params }).then(res => res.data);
-};
-
-export const PUT = (url, params) => {
-  return axios.put(`${url}`, params).then(res => res.data);
-};
-
-export const DELETE = (url, params) => {
-  return axios.delete(`${url}`, { params: params }).then(res => res.data);
-};
-
-export const PATCH = (url, params) => {
-  return axios.patch(`${url}`, params).then(res => res.data);
-};
+export default axios;

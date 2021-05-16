@@ -1,0 +1,26 @@
+{
+    "CSDN": {
+        "excelName": "CSDN文章",
+        "headerObj": {
+            "nameArr": [
+                "名称",
+                "ID",
+                "描述",
+                "浏览量",
+                "点赞数",
+                "创建时间",
+                "作者"
+            ],
+            "fieldArr": [
+                "title",
+                "id",
+                "digest",
+                "view",
+                "digg",
+                "create_time_str",
+                "nickname"
+            ],
+            "unitArr": []
+        }
+    }
+}

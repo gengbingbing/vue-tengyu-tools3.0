@@ -75,6 +75,12 @@ const routes = [
         meta: { title: '导出/入Excel', icon: '', affix: true }
       },
       {
+        path: '/tool/exportExcel',
+        component: () => import('@/views/tool/exportExcel/index.vue'),
+        name: '导出Excel',
+        meta: { title: '导出Excel', icon: '', affix: true }
+      },
+      {
         path: '/tool/card',
         component: () => import('@/views/card/index.vue'),
         name: '导出/入Excel',
