@@ -130,8 +130,8 @@ module.exports = {
             .use(CompressionWebpackPlugin)
             .tap(() => [
               {
-                test: /\.js$|\.html$|\.css/, // 匹配文件名
-                threshold: 10240, // 超过10k进行压缩
+                test: /\.js$|\.html$|static$|\.css/, // 匹配文件名
+                threshold: 1024, // 超过10k进行压缩
                 deleteOriginalAssets: false // 是否删除源文件
               }
             ]);
