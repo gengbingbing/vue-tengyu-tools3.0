@@ -6,7 +6,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  // extends: 'eslint:recommended',
+  "extends": ["eslint:recommended", "ivweb"],
   // required to lint *.vue files
   plugins: [
     'html',
@@ -62,7 +62,7 @@ module.exports = {
     'new-parens': 2,
     'no-array-constructor': 2,
     'no-caller': 2,
-    'no-console': 'off',
+    'no-console': 'warn',
     'no-class-assign': 2,
     'no-cond-assign': 2,
     'no-const-assign': 2,
