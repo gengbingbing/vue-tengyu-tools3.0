@@ -11,7 +11,16 @@
     "build:prod": "vue-cli-service build --mode production.prod",
     "lint": "vue-cli-service lint",
     "postinstall": "patch-package",
-    "test": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,scss,vue}": [
+        "eslint --fix",
+        "git add"
+      ]
+    }
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -49,8 +58,10 @@
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
     "extract-text-webpack-plugin": "^3.0.2",
+    "husky": "^6.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "lint-staged": "^11.0.0",
     "script-ext-html-webpack-plugin": "^2.1.5",
     "svg-sprite-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.11"
