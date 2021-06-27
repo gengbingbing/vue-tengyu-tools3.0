@@ -53,7 +53,7 @@ export default {
       this.$router.push(url); //用go刷新
     },
     handleSelect(index) {
-      this.defaultActiveIndex = index
+      this.defaultActiveIndex = index;
     },
     fetchNavData() {
       // 初始化菜单激活项
