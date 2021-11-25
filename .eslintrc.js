@@ -20,7 +20,7 @@ module.exports = {
       'before': true,
       'after': true
     }],
-    'block-spacing': [2, 'always'],
+    'block-spacing': [4, 'always'],
     'brace-style': [2, '1tbs', {
       'allowSingleLine': true
     }],

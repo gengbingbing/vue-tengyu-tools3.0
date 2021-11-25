@@ -58,6 +58,18 @@ const routes = [
         component: () => import('@/views/treeTransfer/treeDragTransfer.vue'),
         name: '树形可拖拽穿越框',
         meta: { title: '树形可拖拽穿越框', icon: '', affix: true }
+      },
+      {
+        path: '/jsPlumb',
+        component: () => import('../components/jsPlumb/index.vue'),
+        name: 'jsPlumb',
+        meta: { title: 'jsPlumb', icon: '', affix: true }
+      },
+      {
+        path: '/antvG6',
+        component: () => import('../components/antvG6/index.vue'),
+        name: 'antvG6',
+        meta: { title: 'antvG6', icon: '', affix: true }
       }
     ]
   },
