@@ -39,6 +39,13 @@ export default {
               offset: 10,
             },
           },
+          {
+            id: 'node3',
+            label: '自定义节点',
+            x: 200,
+            y: 300,
+            type: 'rect-jsx',
+          },
         ],
         // 边集
         edges: [
@@ -47,15 +54,84 @@ export default {
             label: '30%',
             source: 'node1',
             target: 'node2',
+            style: {
+              endArrow: true,
+            },
+          },
+          {
+            label: '90%',
+            source: 'node1',
+            target: 'node3',
+            style: {
+              endArrow: {
+                path: G6.Arrow.triangle(),
+                fill: 'red',
+              },
+            },
+          },
+          {
+            label: '10%',
+            source: 'node3',
+            target: 'node2',
+            style: {
+              endArrow: {
+                path: G6.Arrow.vee(),
+              },
+            },
           },
         ],
       },
     };
   },
   mounted() {
+    this.registerNode();
     this.g6();
   },
   methods: {
+    registerNode() {
+      G6.registerNode(
+        'rect-jsx',
+        (cfg) => `
+          <group>
+            <rect>
+              <rect style={{
+                width: 180,
+                height: 20,
+                fill: ${cfg.color},
+                radius: [6, 6, 0, 0],
+                cursor: 'pointer',
+                stroke: ${cfg.color}
+              }} draggable="true">
+                <text style={{
+                  marginTop: 2,
+                  marginLeft: 85,
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  fill: '#fff' }}>{{label}}</text>
+              </rect>
+              <rect style={{
+                width: 180,
+                height: 55,
+                stroke: ${cfg.color},
+                fill: #ffffff,
+                radius: [0, 0, 6, 6],
+              }}>
+                <text style={{ marginTop: 5, marginLeft: 3, fill: '#333', marginLeft: 4 }}>描述: {{description}}</text>
+                <text style={{ marginTop: 10, marginLeft: 3, fill: '#333', marginLeft: 4 }}>创建者: {{meta.creatorName}}</text>
+              </rect>
+            </rect>
+            <circle style={{
+              stroke: ${cfg.color},
+              r: 8,
+              fill: '#fff',
+              marginLeft: 91,
+              cursor: 'pointer'
+            }} name="circle">
+              <image style={{ img: 'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png', width: 12, height: 12,  marginLeft: 85,  marginTop: -5 }} />
+            </circle>
+          </group>`
+      );
+    },
     g6() {
       const width = 1000 || document.getElementById('main').scrollWidth;
       const height = document.getElementById('main').scrollHeight || 500;
@@ -111,6 +187,8 @@ export default {
         },
         modes: {
           default: [
+            'drag-node',
+            'zoom-canvas',
             {
               type: 'tooltip', // 提示框
               formatText(model) {
