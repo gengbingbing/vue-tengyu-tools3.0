@@ -70,6 +70,18 @@ const routes = [
         component: () => import('../components/antvG6/index.vue'),
         name: 'antvG6',
         meta: { title: 'antvG6', icon: '', affix: true }
+      },
+      {
+        path: '/d3',
+        component: () => import('../components/d3js/index.vue'),
+        name: 'd3',
+        meta: { title: 'd3', icon: '', affix: true }
+      },
+      {
+        path: '/treeMap',
+        component: () => import('../components/echarts/treeMap.vue'),
+        name: 'treeMap',
+        meta: { title: 'treeMap', icon: '', affix: true }
       }
     ]
   },
