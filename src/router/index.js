@@ -160,8 +160,8 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: 'hash',
-  base: process.env.BASE_URL,
+  mode: 'history',
+  base: window.__MICRO_APP_BASE_ROUTE__ || '/',
   routes
 });
 

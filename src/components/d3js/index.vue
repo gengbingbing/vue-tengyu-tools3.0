@@ -1,5 +1,8 @@
 <template>
-  <div class="chart"></div>
+  <div>
+    {{ data }}
+    <div class="chart"></div>
+  </div>
 </template>
 <script>
 import * as d3 from 'd3';

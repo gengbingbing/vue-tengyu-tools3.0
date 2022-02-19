@@ -43,6 +43,9 @@ module.exports = {
   lintOnSave: false,
   productionSourceMap: false,
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     port: port,
     open: true,
     overlay: {

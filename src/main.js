@@ -5,6 +5,7 @@ import store from './store';
 import './icons'; // icon
 import ElementUI from 'element-ui';
 import Cookies from 'js-cookie';
+import './public-path'
 
 import * as filters from './filters'; // global filters
 import './permission'; // permission control
@@ -22,8 +23,15 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
 
-new Vue({
+
+const app = new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app');
+})
+app.$mount('#app');
+
+// 监听卸载操作
+window.addEventListener('unmount', function () {
+  app.$destroy()
+})
