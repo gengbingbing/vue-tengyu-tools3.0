@@ -9,6 +9,9 @@ export default {
   mounted(){
     document.getElementById('app').style.display = 'block';
     document.getElementById('loader-wrapper').style.display = 'none';
+
+    console.log(window.microApp.getData())
+    window.microApp.dispatch({type: '子应用发送的数据'})
   }
 };
 </script>
