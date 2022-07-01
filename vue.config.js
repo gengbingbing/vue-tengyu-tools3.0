@@ -42,6 +42,20 @@ module.exports = {
   assetsDir: 'static',
   lintOnSave: false,
   productionSourceMap: false,
+  css: {
+		sourceMap: false,
+		loaderOptions: {
+			sass: {
+				prependData: '@import "@/assets/css/mixins.scss";@import "@/assets/css/theme.scss";'
+			},
+			stylus: {
+				'resolve url': true,
+				'import': [
+					'./src/theme'
+				]
+			}
+		}
+	},
   devServer: {
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -58,7 +72,7 @@ module.exports = {
     name: name,
     resolve: {
       alias: {
-        '@': resolve('src')
+        '@': resolve('src'),
       }
     }
   },

@@ -1,0 +1,17 @@
+// 单选-demo
+.el-radio__input.is-checked.el-radio__inner {
+    border-color: $origin !important;
+    background: $origin !important;
+}
+.el-radio__input.is-checked + .el-radio__label {
+    color: $origin !important;
+}
+.el-radio__inner {
+    border-color: #aaa!important;
+    width: 20px!important;
+    height: 20px!important;
+}
+.el-radio__inner::after {
+    width: 8px!important;
+    height: 8px!important;
+}

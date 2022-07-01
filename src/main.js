@@ -6,6 +6,8 @@ import './icons'; // icon
 import ElementUI from 'element-ui';
 import Cookies from 'js-cookie';
 import './public-path'
+import'@/assets/css/font.css'
+import'@/assets/css/element.scss'
 
 import * as filters from './filters'; // global filters
 import './permission'; // permission control

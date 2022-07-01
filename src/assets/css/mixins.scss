@@ -1,0 +1,90 @@
+// 弹性布局
+@mixin flex($row: normal, $col: normal, $dir: row, $wrap: nowrap, $flex: flex) {
+    display: $flex;
+    flex-wrap: $wrap;
+    flex-direction: $dir;
+    @if $row !=normal {
+        justify-content: $row;
+    }
+    @if $col !=normal {
+        align-items: $col;
+    }
+}
+// 清除浮动
+@mixin clearfix() {
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+// 媒体查询
+@mixin screen($min, $max) {
+    @media screen and (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+@mixin min-screen($width) {
+    @media screen and (min-width: $width) {
+        @content;
+    }
+}
+@mixin max-screen($width) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}
+// 盒模型阴影
+@mixin box-shadow($hshadow: 0, $vshadow: 0, $blur: 10px, $spread: 10px, $color: #000, $inset: null) {
+    @include prefix(box-shadow, $hshadow $vshadow $blur $spread $color $inset);
+}
+// 背景色渐变
+@mixin linear-gradient($from, $to, $dir: right) {
+    @if not (type-of($dir) == number) {
+        $dir: to $dir
+    }
+    /*! autoprefixer: off */
+    background-image: -webkit-linear-gradient($dir, $from, $to);
+    background-image: -moz-linear-gradient($dir, $from, $to);
+    background-image: -o-linear-gradient($dir, $from, $to);
+    background-image: -ms-linear-gradient($dir, $from, $to);
+    background-image: linear-gradient($dir, $from, $to);
+    /* autoprefixer: on */
+}
+// 文字溢出省略
+@mixin ellipsis($lines: 1) {
+    @if $lines !=1 {
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: $lines;
+        /*! autoprefixer: off */
+        -webkit-box-orient: vertical;
+        /*! autoprefixer: on */
+    }
+    @else {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+// 三角形
+@mixin triangle($width: 10px, $height: 10px, $color: #000000, $direction: top) {
+    $angle-direction: (
+                    top: bottomleftright,
+                    bottom: topleftright,
+                    left: righttopbottom,
+                    right: lefttopbottom
+    );
+    $conf: map-get($angle-direction, $direction);
+    @if $direction ==topor $direction ==bottom {
+        $width: $width /2;
+    } @else {
+        $height: $height /2;
+    }
+    width: 0;
+    height: 0;
+    border-#{nth($conf, 1)}: $height solid $color;
+    border-#{nth($conf, 2)}: $width solidtransparent;
+    border-#{nth($conf, 3)}: $width solidtransparent;
+}

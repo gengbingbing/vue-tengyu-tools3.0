@@ -93,6 +93,12 @@ const routes = [
     meta: { title: '工具', icon: '', affix: true },
     children: [
       {
+        path: '/tool/swiper',
+        component: () => import('@/components/swiper/index.vue'),
+        name: '轮播组件',
+        meta: { title: 'swiper', icon: '', affix: true }
+      },
+      {
         path: '/tool/index',
         component: () => import('@/views/tool/export.vue'),
         name: '导出/入Excel',
