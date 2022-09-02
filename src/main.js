@@ -1,3 +1,9 @@
+/*
+ * @Author: bingbing.geng
+ * @Date: 2022-09-02 08:33:41
+ * @LastEditTime: 2022-09-02 08:47:53
+ * @FilePath: \vue-tengyu-tools3.0\src\main.js
+ */
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
@@ -11,6 +17,13 @@ import'@/assets/css/element.scss'
 
 import * as filters from './filters'; // global filters
 import './permission'; // permission control
+
+// 引入刚才的js文件
+import { initTheme, themeOptions } from '@/views/theme/theme.js';
+// key 选择初始化加载默认的主体
+initTheme('dark');
+Vue.prototype.$initTheme = initTheme;
+Vue.prototype.$themeOptions = themeOptions;
 
 console.log('打包环境===>', process.env.NODE_ENV);
 

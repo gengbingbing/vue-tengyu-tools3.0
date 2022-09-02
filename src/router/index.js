@@ -93,6 +93,12 @@ const routes = [
     meta: { title: '工具', icon: '', affix: true },
     children: [
       {
+        path: '/tool/theme',
+        component: () => import('@/views/theme/index.vue'),
+        name: '主题切换',
+        meta: { title: '主题切换', icon: '', affix: true }
+      },
+      {
         path: '/tool/swiper',
         component: () => import('@/components/swiper/index.vue'),
         name: '轮播组件',
