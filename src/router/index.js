@@ -93,6 +93,12 @@ const routes = [
     meta: { title: '工具', icon: '', affix: true },
     children: [
       {
+        path: '/tool/md-menu',
+        component: () => import('@/views/md-menu/index.vue'),
+        name: 'html生成菜单',
+        meta: { title: 'HTML生成菜单', icon: '', affix: true }
+      },
+      {
         path: '/tool/theme',
         component: () => import('@/views/theme/index.vue'),
         name: '主题切换',

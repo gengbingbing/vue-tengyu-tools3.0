@@ -1,7 +1,7 @@
 /*
  * @Author: bingbing.geng
  * @Date: 2022-09-02 08:33:41
- * @LastEditTime: 2022-09-02 08:47:53
+ * @LastEditTime: 2022-09-06 14:09:03
  * @FilePath: \vue-tengyu-tools3.0\src\main.js
  */
 import Vue from 'vue';
