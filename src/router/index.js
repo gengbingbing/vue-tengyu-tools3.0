@@ -93,6 +93,12 @@ const routes = [
     meta: { title: '工具', icon: '', affix: true },
     children: [
       {
+        path: '/tool/listeners-attr',
+        component: () => import('@/views/listeners-attr/index.vue'),
+        name: '跨组件传值',
+        meta: { title: '跨组件传值', icon: '', affix: true }
+      },
+      {
         path: '/tool/md-menu',
         component: () => import('@/views/md-menu/index.vue'),
         name: 'html生成菜单',

@@ -153,6 +153,8 @@ export default {
 <style lang="scss" >
 .el-main {
   width: calc(100% - 270px);
+  overflow-y: auto;
+  // height: calc(100vh - 60px);
 }
 .el-tabs__header.is-right {
   height: 500px !important;
