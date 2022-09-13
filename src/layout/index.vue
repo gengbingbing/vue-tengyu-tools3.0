@@ -1,9 +1,15 @@
+<!--
+ * @Author: bingbing.geng
+ * @Date: 2022-09-02 08:33:41
+ * @LastEditTime: 2022-09-13 09:31:52
+ * @FilePath: \vue-tengyu-tools3.0\src\layout\index.vue
+-->
 <template>
   <div class="app-wrapper">
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <Header />
-      <app-main />
+      <app-main class="mains" />
     </div>
   </div>
 </template>
@@ -47,6 +53,10 @@ export default {
       // display: inline-block;
       position: relative;
       float: right;
+  }
+  .mains {
+    overflow-y: auto;
+    height: calc(100vh - 70px);
   }
 }
 </style>

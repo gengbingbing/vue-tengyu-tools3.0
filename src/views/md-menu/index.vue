@@ -83,14 +83,7 @@ export default {
       // 获取需要滚动的距离
       let total = jump[index].offsetTop - 80;
       // Chrome
-      document.body.scrollTop = total;
-      // Firefox
-      document.documentElement.scrollTop = total;
-      // Safari
-      window.pageYOffset = total;
-      // $('html, body').animate({
-      // 'scrollTop': total
-      // }, 400);
+      document.getElementsByClassName('mains')[0].scrollTop = total;
     },
     loadScroll: function() {
       let self = this;
