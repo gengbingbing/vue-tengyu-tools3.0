@@ -93,6 +93,12 @@ const routes = [
     meta: { title: '工具', icon: '', affix: true },
     children: [
       {
+        path: '/tool/smoothSignature',
+        component: () => import('@/views/tool/smoothSignature.vue'),
+        name: '签名',
+        meta: { title: '签名', icon: '', affix: true }
+      },
+      {
         path: '/tool/listeners-attr',
         component: () => import('@/views/listeners-attr/index.vue'),
         name: '跨组件传值',
