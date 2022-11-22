@@ -18,6 +18,12 @@ const routes = [
         meta: { title: 'elGrid 表格', icon: '', affix: true }
       },
       {
+        path: '/dragTable',
+        component: () => import('@/views/table/dragTable.vue'),
+        name: 'dragTable 表格',
+        meta: { title: 'dragTable 表格', icon: '' }
+      },
+      {
         path: '/dgTable',
         component: () => import('@/views/table/dgTable.vue'),
         name: 'dgTable 表格',
