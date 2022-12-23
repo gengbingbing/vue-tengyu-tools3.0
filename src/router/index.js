@@ -173,6 +173,27 @@ const routes = [
     ]
   },
   {
+    path: '/demo',
+    name: 'demo',
+    component: Layout,
+    redirect: '/demo',
+    meta: { title: 'demo', icon: '', affix: false },
+    children: [
+      {
+        path: '/demo/scroll',
+        component: () => import('@/views/scroll/index'),
+        name: 'scroll',
+        meta: { title: 'scroll', icon: '', affix: true }
+      },
+      {
+        path: '/demo/scroll1',
+        component: () => import('@/views/scroll/index1'),
+        name: 'scroll1',
+        meta: { title: 'scroll1', icon: '', affix: true }
+      },
+    ]
+  },
+  {
     path: '/err-page',
     name: '404',
     component: Layout,
