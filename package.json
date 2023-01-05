@@ -13,7 +13,8 @@
     "lint": "vue-cli-service lint",
     "postinstall": "patch-package",
     "test": "vue-cli-service test:unit",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "new": "plop"
   },
   "lint-staged": {
     "linters": {
@@ -43,6 +44,7 @@
     "nprogress": "0.2.0",
     "patch-package": "6.4.7",
     "path-to-regexp": "3.2.0",
+    "plop": "^3.1.1",
     "postinstall-postinstall": "2.1.0",
     "sass": "^1.32.8",
     "sass-loader": "^8.0.2",

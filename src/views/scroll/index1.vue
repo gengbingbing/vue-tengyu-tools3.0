@@ -1,18 +1,18 @@
 <template>
   <div id="wrap" :style="{ height: screenHeight + 'px' }">
     <div id="main" :style="{ top: nowTop + 'px' }">
-      <ul id="pageUl" type="circle">
+      <ul id="pageUl" type="disc">
         <li id="pageUlLi1" class="pageUlLi" :class="{'active': curIndex == 1}">&nbsp;</li>
         <li id="pageUlLi2" class="pageUlLi" :class="{'active': curIndex == 2}">&nbsp;</li>
         <li id="pageUlLi3" class="pageUlLi" :class="{'active': curIndex == 3}">&nbsp;</li>
         <li id="pageUlLi4" class="pageUlLi" :class="{'active': curIndex == 4}">&nbsp;</li>
         <li id="pageUlLi5" class="pageUlLi" :class="{'active': curIndex == 5}">&nbsp;</li>
       </ul>
-      <div style="background-color: #1b6d85" id="page1" class="page">111</div>
-      <div style="background-color: #5cb85c" id="page2" class="page">222</div>
-      <div style="background-color: #8a6d3b" id="page3" class="page">333</div>
-      <div style="background-color: #337ab7" id="page4" class="page">444</div>
-      <div style="background-color: #66512c" id="page5" class="page">555</div>
+      <div style="background-color: #1b6d85" id="page1" class="page">111  &laquo;</div>
+      <div style="background-color: #5cb85c" id="page2" class="page">222 &ast;</div>
+      <div style="background-color: #8a6d3b" id="page3" class="page">333 &reg;</div>
+      <div style="background-color: #337ab7" id="page4" class="page">444 &hamilt;</div>
+      <div style="background-color: #66512c" id="page5" class="page">555 &real;</div>
     </div>
   </div>
 </template>
@@ -113,7 +113,7 @@ div {
 
 #main {
   position: relative;
-  transition: top 1.2s;
+  transition: top 0.5s;
 }
 
 .page {
@@ -129,6 +129,13 @@ div {
 }
 
 .active {
-  color: red;
+  color: rgb(0, 89, 255) !important;
+}
+.active::marker {
+  background: rgb(0, 89, 255) !important;
+}
+.pageUlLi {
+  color: rgb(248, 248, 248);
+  background: #FFF;
 }
 </style>

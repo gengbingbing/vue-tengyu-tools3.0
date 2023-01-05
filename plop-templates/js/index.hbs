@@ -1,0 +1,57 @@
+export default  {
+  {{!-- 查询表单 --}}
+  query: {
+    queryLable: [
+      {
+        label: "label名称",
+        prop: "name",
+        component: "el-input",
+      }
+    ],
+    queryParams: {
+      name: "",
+    },
+  },
+  {{!-- 新增/编辑表单 --}}
+  from: {
+    addEditFrom: [
+      name: "",
+      passWorld: "",
+    ],
+    addEditFromLable: [
+      {
+        label: "label名称1",
+        prop: "name",
+        component: "el-input",
+      },
+      {
+        label: "label名称2",
+        prop: "passWorld",
+        component: "el-input",
+        type: "password"
+      }
+    ],
+    addEditFromRules: [
+      name: [
+        {
+          required: true,
+          message: "请输入用户名"
+        }
+      ],
+    ],
+  },
+  {{!-- 表格 --}}
+  table: {
+    {{!-- 表格header插槽按钮 --}}
+    buttonList: [],
+    {{!-- 表格配置列 --}}
+    columns: [
+      {
+        prop: "name",
+        label: "label名称"
+      }
+    ],
+    {{!-- 表格操作列 --}}
+    operations: [],
+  },
+}
