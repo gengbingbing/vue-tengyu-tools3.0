@@ -5,7 +5,12 @@
                 <el-button slot="append" icon="el-icon-search" @click="changePanorama"></el-button>
             </el-input>
 
-            <p>https://images.unsplash.com/photo-1501183638710-841dd1904471</p>
+            <p @click="() => img = 'https://images.unsplash.com/photo-1501183638710-841dd1904471'">
+                https://images.unsplash.com/photo-1501183638710-841dd1904471</p>
+            <p @click="() => img = 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353'">
+                https://images.unsplash.com/photo-1505691723518-36a5ac3be353</p>
+            <p @click="() => img = 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750'">
+                https://images.unsplash.com/photo-1512917774080-9991f1c4c750</p>
         </div>
         <div id="photosphere" class="photosphere"></div>
     </div>

@@ -13,7 +13,8 @@
     "lint": "vue-cli-service lint",
     "postinstall": "patch-package",
     "test": "vue-cli-service test:unit",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "new": "plop"
   },
   "lint-staged": {
     "linters": {
@@ -44,11 +45,13 @@
     "patch-package": "6.4.7",
     "path-to-regexp": "3.2.0",
     "photo-sphere-viewer": "^4.8.1",
+    "plop": "^3.1.1",
     "postinstall-postinstall": "2.1.0",
     "sass": "^1.32.8",
     "sass-loader": "^8.0.2",
     "script-loader": "0.7.2",
     "smooth-signature": "^1.0.12",
+    "sortablejs": "^1.15.0",
     "swiper": "^5.4.5",
     "viewerjs": "^1.10.5",
     "vue": "2.6.11",

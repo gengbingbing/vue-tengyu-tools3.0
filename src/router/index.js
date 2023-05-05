@@ -18,6 +18,12 @@ const routes = [
         meta: { title: 'elGrid 表格', icon: '', affix: true }
       },
       {
+        path: '/dragTable',
+        component: () => import('@/views/table/dragTable.vue'),
+        name: 'dragTable 表格',
+        meta: { title: 'dragTable 表格', icon: '' }
+      },
+      {
         path: '/dgTable',
         component: () => import('@/views/table/dgTable.vue'),
         name: 'dgTable 表格',
@@ -170,6 +176,27 @@ const routes = [
         name: '指令Copy',
         meta: { title: '指令Copy', icon: '', affix: true }
       }
+    ]
+  },
+  {
+    path: '/demo',
+    name: 'demo',
+    component: Layout,
+    redirect: '/demo',
+    meta: { title: 'demo', icon: '', affix: false },
+    children: [
+      {
+        path: '/demo/scroll',
+        component: () => import('@/views/scroll/index'),
+        name: 'scroll',
+        meta: { title: 'scroll', icon: '', affix: true }
+      },
+      {
+        path: '/demo/scroll1',
+        component: () => import('@/views/scroll/index1'),
+        name: 'scroll1',
+        meta: { title: 'scroll1', icon: '', affix: true }
+      },
     ]
   },
   {
