@@ -93,6 +93,12 @@ const routes = [
     meta: { title: '工具', icon: '', affix: true },
     children: [
       {
+        path: '/tool/photoSphereViewer',
+        component: () => import('@/views/tool/photoSphereViewer/index.vue'),
+        name: '全景查看',
+        meta: { title: '全景查看', icon: '', affix: true }
+      },
+      {
         path: '/tool/smoothSignature',
         component: () => import('@/views/tool/smoothSignature.vue'),
         name: '签名',
@@ -173,6 +179,12 @@ const routes = [
     redirect: '/404',
     meta: { title: '异常页面', icon: '', affix: false },
     children: [
+      {
+        path: '/err-page/imgLazyload',
+        component: () => import('@/views/imgLazyload/index'),
+        name: 'imgLazyload',
+        meta: { title: 'imgLazyload', icon: '', affix: true }
+      },
       {
         path: '/err-page/404',
         component: () => import('@/views/err-page/404'),

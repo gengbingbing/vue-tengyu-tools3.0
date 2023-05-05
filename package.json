@@ -43,6 +43,7 @@
     "nprogress": "0.2.0",
     "patch-package": "6.4.7",
     "path-to-regexp": "3.2.0",
+    "photo-sphere-viewer": "^4.8.1",
     "postinstall-postinstall": "2.1.0",
     "sass": "^1.32.8",
     "sass-loader": "^8.0.2",
@@ -52,6 +53,7 @@
     "viewerjs": "^1.10.5",
     "vue": "2.6.11",
     "vue-countup-v2": "4.0.0",
+    "vue-meta-info": "^0.1.7",
     "vue-router": "3.2.0",
     "vuex": "3.4.0",
     "xlsx": "0.16.3"
@@ -76,6 +78,7 @@
     "less": "3.0.4",
     "less-loader": "5.0.0",
     "lint-staged": "11.0.0",
+    "prerender-spa-plugin": "^3.4.0",
     "script-ext-html-webpack-plugin": "2.1.5",
     "svg-sprite-loader": "5.0.0",
     "vue-awesome-swiper": "^3.1.3",

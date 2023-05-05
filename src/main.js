@@ -18,8 +18,15 @@ import'@/assets/css/element.scss'
 import * as filters from './filters'; // global filters
 import './permission'; // permission control
 
+import imgLazyload from './directive/imgLazyload';
+import animate from './directive/animate'
+
 // 引入刚才的js文件
 import { initTheme, themeOptions } from '@/views/theme/theme.js';
+
+import MetaInfo from 'vue-meta-info';
+
+Vue.use(MetaInfo)
 // key 选择初始化加载默认的主体
 initTheme('dark');
 Vue.prototype.$initTheme = initTheme;
@@ -37,6 +44,9 @@ Vue.use(ElementUI, {
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
+
+Vue.use(imgLazyload)
+Vue.use(animate)
 
 
 const app = new Vue({
