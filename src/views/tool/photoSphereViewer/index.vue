@@ -17,7 +17,6 @@
 </template>
 <script>
 import { Viewer } from 'photo-sphere-viewer'
-import * as PSV from 'photo-sphere-viewer/dist/photo-sphere-viewer.js';
 import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
 
 import { MarkersPlugin } from "photo-sphere-viewer/dist/plugins/markers";
@@ -27,7 +26,7 @@ export default {
     data() {
         return {
             panoramadata: null,
-            img: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg' || require('../../../assets/icon/panorama.jpg'),
+            img: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
             selectMarkers: [],
         }
     },
@@ -131,7 +130,6 @@ export default {
             });
 
             this.panoramadata.on('click', (e, data) => {
-                console.log(data, '9999999999999999')
                 if (!data.rightclick) {
                     markersPlugin.addMarker({
                         id: '#' + Math.random(),

@@ -99,6 +99,12 @@ const routes = [
     meta: { title: '工具', icon: '', affix: true },
     children: [
       {
+        path: '/tool/swiperPdf',
+        component: () => import('@/views/tool/swiperPdf/index.vue'),
+        name: 'PDF',
+        meta: { title: 'PDF', icon: '', affix: true }
+      },
+      {
         path: '/tool/photoSphereViewer',
         component: () => import('@/views/tool/photoSphereViewer/index.vue'),
         name: '全景查看',
